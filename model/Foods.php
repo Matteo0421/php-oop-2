@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Products.php';
+
 class Foods extends Products {
     private $type; // Croccantini, Umido, Snack, ecc.
 

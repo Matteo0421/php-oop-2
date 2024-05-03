@@ -3,7 +3,7 @@
 class Categories {
     private $id;
     private $categories;
-    public $breed;
+    private $breed;
 
     public function __construct($id, $_categories, $_breed ) {
         $this->id = $id;
@@ -17,6 +17,10 @@ class Categories {
 
     public function getCategories() {
         return $this->categories;
+    }
+
+    public function getBreed() {
+        return $this->breed;
     }
 }
 
