@@ -1,6 +1,6 @@
 <?php
 
-class Cuccia extends Products {
+class Kennels extends Products {
     private $dimensioni; // Piccola, Media, Grande, ecc.
 
   
