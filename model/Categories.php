@@ -2,12 +2,12 @@
 
 class Categories {
     private $id;
-    private $name;
+    private $categories;
     public $breed;
 
-    public function __construct($id, $_name, $_breed ) {
+    public function __construct($id, $_categories, $_breed ) {
         $this->id = $id;
-        $this->name = $_name;
+        $this->categories = $_categories;
         $this->breed = $_breed;
     }
 
@@ -15,8 +15,8 @@ class Categories {
         return $this->id;
     }
 
-    public function getNome() {
-        return $this->name;
+    public function getCategories() {
+        return $this->categories;
     }
 }
 

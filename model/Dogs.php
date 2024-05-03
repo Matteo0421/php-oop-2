@@ -3,8 +3,8 @@
 class Dogs extends Categories {
     private $size;
 
-    public function __construct($id, $name,$breed, $_size) {
-        parent::__construct($id, $name, $breed);
+    public function __construct($_id, $_categories,$_breed, $_size) {
+        parent::__construct($_id, $_categories, $_breed);
         $this->size = $$_size;
     }
 
