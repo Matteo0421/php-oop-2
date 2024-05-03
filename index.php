@@ -25,14 +25,14 @@ require_once __DIR__ . '/data/Db.php';
 </head>
 <body>
 <div class="container">
-    <h1 class="mt-4 mb-4 text-center ">ANIMAL SHOP</h1>
+    <h1 class="mt-4 mb-5 text-center ">ANIMAL SHOP</h1>
 
     <div class="row">
         <?php foreach ($db as $prodotto): ?>
             <div class="col-md-6">
-                <div class="card mt-3">
+                <div class="card mt-3 mb-5">
                 <img src="<?php echo $prodotto->image; ?>" class="card-img-top" alt="<?php echo $prodotto->title; ?> " style="height: 350px;" >
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h5 class="card-title"><?php echo $prodotto->title; ?></h5>
                         <p class="card-text">Descrizione: <?php echo $prodotto->description; ?></p>
                         <p class="card-text">Prezzo: <?php echo $prodotto->price; ?></p>
@@ -60,3 +60,9 @@ require_once __DIR__ . '/data/Db.php';
 </div>
 </body>
 </html>
+
+<style>
+  body{
+    background-color: beige;
+  }
+</style>
