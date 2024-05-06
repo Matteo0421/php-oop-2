@@ -3,8 +3,8 @@
 class Games extends Products {
     private $materials; // Peluche, Gomma, Plastica, ecc.
 
-    public function __construct($id, $titolo, $descrizione, $prezzo, $immagine, Categories $categories, $materials) {
-      parent::__construct($id, $titolo, $descrizione, $prezzo, $immagine, $categories);
+    public function __construct($id, $titolo, $descrizione, $prezzo, $immagine, Categories $categories, $materials, $discountPercentage) {
+      parent::__construct($id, $titolo, $descrizione, $prezzo, $immagine, $categories, $discountPercentage);
       $this->materials = $materials;
   }
 

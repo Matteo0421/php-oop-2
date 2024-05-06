@@ -28,35 +28,38 @@ require_once __DIR__ . '/data/Db.php';
     <h1 class="mt-4 mb-5 text-center ">ANIMAL SHOP</h1>
 
     <div class="row">
-        <?php foreach ($db as $prodotto): ?>
-            <div class="col-md-6">
-                <div class="card mt-3 mb-5">
-                <img src="<?php echo $prodotto->image; ?>" class="card-img-top" alt="<?php echo $prodotto->title; ?> " style="height: 350px;" >
-                    <div class="card-body ">
-                        <h5 class="card-title"><?php echo $prodotto->title; ?></h5>
-                        <p class="card-text">Descrizione: <?php echo $prodotto->description; ?></p>
-                        <p class="card-text">Prezzo: <?php echo $prodotto->price; ?></p>
-                        <p class="card-text">Categoria: <?php echo $prodotto->categories->getCategories(); ?></p>
-                        <?php if ($prodotto instanceof Foods): ?>
-                            <p class="card-text">Tipo: <?php echo $prodotto->getTipo(); ?></p>
-                        <?php elseif ($prodotto instanceof Games): ?>
-                            <p class="card-text">Materiale: <?php echo $prodotto->getMateriale(); ?></p>
-                        <?php elseif ($prodotto instanceof Kennels): ?>
-                            <p class="card-text">Dimensioni: <?php echo $prodotto->getDimensioni(); ?></p>
-                        <?php endif; ?>
-
-
-                        <!-- Aggiunta dell'icona in base alla categoria -->
-                        <?php if ($prodotto->categories->getCategories() === 'Cani'): ?>
-                    <p><i class="fa-solid fa-dog fs-2"></i></p>
-                <?php elseif ($prodotto->categories->getCategories() === 'Gatti'): ?>
-                    <p><i class="fa-solid fa-cat fs-2"></i></p>
-                <?php endif; ?>
-                    </div>
+    <?php foreach ($db as $prodotto): ?>
+        <div class="col-md-6">
+            <div class="card mt-3 mb-5">
+                <img src="<?php echo $prodotto->image; ?>" class="card-img-top" alt="<?php echo $prodotto->title; ?> " style="height: 350px;">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $prodotto->title; ?></h5>
+                    <p class="card-text">Descrizione: <?php echo $prodotto->description; ?></p>
+                    <p class="card-text">Categoria: <?php echo $prodotto->categories->getCategories(); ?></p>
+                    <!-- Mostra il prezzo originale -->
+                    <p class="card-text">Prezzo originale:&euro; <?php echo  $prodotto->price; ?></p>
+                    <?php 
+                    // Calcola il prezzo scontato
+                    $discountedPrice = $prodotto->calculateDiscountedPrice($prodotto->price, $prodotto->discountPercentage);
+                    // Arrotonda il prezzo scontato alle prime due cifre decimali
+                    $roundedDiscountedPrice = round($discountedPrice, 2);
+                    ?>
+                    <!-- Mostra il prezzo scontato in rosso e arrotondato -->
+                    <p class="card-text">Prezzo scontato: <span class="text-danger">&euro;<?php echo number_format($roundedDiscountedPrice, 2); ?></span></p>
+                    <!-- Aggiunta dell'icona in base alla categoria -->
+                    <?php if ($prodotto->categories->getCategories() === 'Cani'): ?>
+                        <p><i class="fa-solid fa-dog fs-2"></i></p>
+                    <?php elseif ($prodotto->categories->getCategories() === 'Gatti'): ?>
+                        <p><i class="fa-solid fa-cat fs-2"></i></p>
+                    <?php endif; ?>
                 </div>
             </div>
-        <?php endforeach; ?>
-    </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
+
 </div>
 </body>
 </html>
